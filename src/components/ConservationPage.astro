@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props { locale: 'es' | 'en'; }
+const { locale } = Astro.props;
+const isSpanish = locale === 'es';
+
+const copy = isSpanish ? {
+  title: 'Forestal Colombia | Decisiones que mantienen el bosque en pie',
+  description: 'Una plataforma editorial sobre conservación forestal en Colombia: datos, territorio y decisiones de largo plazo.',
+  nav: [['Panorama', '#panorama'], ['Priorizar', '#priorizar'], ['Método', '#metodo'], ['Fuentes', '#fuentes']],
+  menu: 'Menú',
+  heroKicker: 'FORESTAL COLOMBIA · NOTAS DE CONSERVACIÓN',
+  heroTitle: 'El bosque no es el fondo del mapa.',
+  heroLead: 'Es agua, hogar, memoria y una infraestructura viva. Cuidarlo exige decisiones claras, datos abiertos y acuerdos que nazcan en el territorio.',
+  heroAction: 'Ver el panorama',
+  heroMeta: 'Bosque andino · Serranía de Minas, Huila',
+  heroCredit: 'Foto: Juanpablo.madrid-malo · CC BY-SA 4.0',
+  introLabel: 'Una pregunta de país',
+  intro: '¿Cómo proteger más vida con recursos finitos sin reducir el territorio a una hoja de cálculo?',
+  introBody: 'Colombia concentra selvas amazónicas, bosques andinos, bosque seco, manglares y paisajes de niebla. Cada uno tiene ritmos, especies y comunidades distintas. La conservación útil parte de reconocer esa diversidad antes de intentar priorizarla.',
+  statLabel: 'Bosque natural en Colombia · cierre 2024',
+  stat1: '59,1 M ha',
+  stat1Label: 'de bosque natural',
+  stat2: '51,8 %',
+  stat2Label: 'del territorio continental e insular',
+  stat3: '68 %',
+  stat3Label: 'de la deforestación 2024 ocurrió en Amazonía',
+  dataNote: 'Las cifras son del informe oficial IDEAM 2024; no son estimaciones de este sitio.',
+  panoramaKicker: 'LECTURA DEL TERRITORIO',
+  panoramaTitle: 'Una cifra nacional nunca cuenta toda la historia.',
+  panoramaText: 'En 2024 Colombia registró 113.608 hectáreas deforestadas, frente a 79.256 en 2023. Meta y Caquetá concentraron las mayores superficies perdidas; los motores son diversos: acaparamiento de tierras, ganadería extensiva, infraestructura no planificada, extracción ilícita y expansión agrícola.',
+  panoramaLink: 'Abrir monitoreo IDEAM',
+  ringTop: 'Amazonía', ringBottom: 'de la pérdida nacional', ringValue: '68%',
+  places: [
+    ['AMAZONÍA', '38,8 M ha de bosque natural', '65,6 % del bosque natural del país'],
+    ['ANDES', '14.910 ha deforestadas en 2024', '13 % de la pérdida nacional'],
+    ['PACÍFICO', 'Mosaicos de alta biodiversidad', 'Seguimiento territorial situado'],
+  ],
+  priorityKicker: 'CUANDO HAY QUE ELEGIR',
+  priorityTitle: 'Priorizar no es decidir desde lejos.',
+  priorityLead: 'La planificación sistemática ayuda a hacer visibles los intercambios: qué áreas restaurar, dónde mantener conectividad y cómo cumplir metas con un presupuesto limitado. Pero una solución matemática nunca sustituye el consentimiento, los derechos ni el conocimiento local.',
+  mipLabel: 'Programación entera mixta · MIP',
+  mipTitle: 'Una herramienta para conversar con evidencia.',
+  mipIntro: 'En un modelo sencillo, cada unidad de planificación recibe una decisión binaria: seleccionar o no seleccionar. El modelo busca una combinación que cumpla metas ecológicas y sociales bajo restricciones explícitas.',
+  equation: 'minimizar costo + fragmentación',
+  constraints: [
+    ['xᵢ ∈ {0,1}', 'Seleccionar o no una unidad de planificación'],
+    ['Σ cᵢxᵢ ≤ B', 'Respetar un presupuesto acordado'],
+    ['Σ hᵢₛxᵢ ≥ Tₛ', 'Alcanzar metas de hábitat o representación'],
+    ['conectividad', 'Mantener rutas y relaciones ecológicas'],
+  ],
+  mipFoot: 'Los modelos reales pueden integrar costos, carbono, especies, restauración y conectividad. Sus resultados deben revisarse con comunidades, autoridades y equipos técnicos antes de convertirse en acción.',
+  methodKicker: 'DEL MAPA A LA ACCIÓN',
+  methodTitle: 'Un proceso que deja ver sus decisiones.',
+  steps: [
+    ['01', 'Escuchar y delimitar', 'Definir la pregunta con comunidades y actores locales. Identificar derechos, acuerdos existentes y zonas que no deben tratarse como variables negociables.'],
+    ['02', 'Leer la evidencia', 'Cruzar coberturas, conectividad, especies, alertas de deforestación, costos y capacidades de implementación. Declarar incertidumbres en vez de ocultarlas.'],
+    ['03', 'Explorar alternativas', 'Comparar portafolios de conservación y restauración: qué gana cada escenario, qué cuesta y qué riesgos desplaza. Un modelo sirve para explicar, no para imponer.'],
+    ['04', 'Acordar y aprender', 'Validar en campo, monitorear resultados y ajustar. La conservación es un compromiso de largo plazo, no una selección única en un mapa.'],
+  ],
+  sourcesKicker: 'FUENTES Y LECTURAS',
+  sourcesTitle: 'Toda decisión merece poder ser revisada.',
+  sourcesLead: 'Este sitio separa datos oficiales, contexto enciclopédico y literatura de métodos. Úsalos como punto de partida, no como sustituto de trabajo territorial.',
+  sources: [
+    ['IDEAM · Monitoreo de la superficie de bosque y deforestación 2024', 'Cifras nacionales de bosque natural, deforestación y localización.', 'https://www.ideam.gov.co/file-download/download/public/19945'],
+    ['Wikipedia · Deforestación en Colombia', 'Contexto general, impactos y referencias para seguir investigando.', 'https://es.wikipedia.org/wiki/Deforestaci%C3%B3n_en_Colombia'],
+    ['Schuster et al. · Exact integer linear programming solvers', 'Artículo revisado por pares sobre optimización exacta en planificación de conservación.', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7261139/'],
+    ['prioritizr · Package overview', 'Documentación de una herramienta de planificación sistemática con MILP.', 'https://prioritizr.net/articles/package_overview.html'],
+  ],
+  finalTitle: 'Conservar es construir futuros que el bosque pueda habitar.',
+  finalText: 'Forestal Colombia reúne preguntas, datos y métodos para respaldar conversaciones más responsables sobre el territorio.',
+  finalButton: 'Volver al inicio',
+  footer: 'Información, territorio y conservación.',
+  language: 'Idioma',
+} : {
+  title: 'Forestal Colombia | Decisions that keep forests standing',
+  description: 'An editorial platform on forest conservation in Colombia: data, place, and long-term decisions.',
+  nav: [['Overview', '#panorama'], ['Priorities', '#priorizar'], ['Method', '#metodo'], ['Sources', '#fuentes']],
+  menu: 'Menu',
+  heroKicker: 'FORESTAL COLOMBIA · CONSERVATION NOTES',
+  heroTitle: 'The forest is not the background of the map.',
+  heroLead: 'It is water, home, memory, and living infrastructure. Caring for it requires clear decisions, open data, and agreements rooted in place.',
+  heroAction: 'See the overview',
+  heroMeta: 'Andean forest · Serranía de Minas, Huila',
+  heroCredit: 'Photo: Juanpablo.madrid-malo · CC BY-SA 4.0',
+  introLabel: 'A country-wide question',
+  intro: 'How can we protect more life with finite resources without reducing place to a spreadsheet?',
+  introBody: 'Colombia holds Amazon forests, Andean forests, dry forest, mangroves, and cloud forests. Each has distinct rhythms, species, and communities. Useful conservation starts by recognising that diversity before trying to prioritise it.',
+  statLabel: 'Natural forest in Colombia · end of 2024',
+  stat1: '59.1 M ha',
+  stat1Label: 'of natural forest',
+  stat2: '51.8%',
+  stat2Label: 'of continental and island territory',
+  stat3: '68%',
+  stat3Label: 'of 2024 deforestation occurred in the Amazon',
+  dataNote: 'Figures are from IDEAM’s 2024 official report; they are not estimates by this site.',
+  panoramaKicker: 'READING PLACE',
+  panoramaTitle: 'A national figure never tells the whole story.',
+  panoramaText: 'In 2024, Colombia recorded 113,608 hectares of deforestation, up from 79,256 in 2023. Meta and Caquetá reported the largest areas lost; drivers are varied: land grabbing, extensive cattle ranching, unplanned infrastructure, illicit extraction, and agricultural expansion.',
+  panoramaLink: 'Open IDEAM monitoring',
+  ringTop: 'Amazon', ringBottom: 'of national forest loss', ringValue: '68%',
+  places: [
+    ['AMAZON', '38.8 M ha of natural forest', '65.6% of the country’s natural forest'],
+    ['ANDES', '14,910 ha deforested in 2024', '13% of national forest loss'],
+    ['PACIFIC', 'High-biodiversity mosaics', 'Place-based territorial monitoring'],
+  ],
+  priorityKicker: 'WHEN CHOICES ARE NECESSARY',
+  priorityTitle: 'Prioritising is not deciding from afar.',
+  priorityLead: 'Systematic planning makes trade-offs visible: which areas to restore, where to maintain connectivity, and how to meet goals with a limited budget. But a mathematical solution never replaces consent, rights, or local knowledge.',
+  mipLabel: 'Mixed-integer programming · MIP',
+  mipTitle: 'A tool for evidence-led conversation.',
+  mipIntro: 'In a simple model, every planning unit receives a binary decision: select it or do not select it. The model finds combinations that meet ecological and social goals under explicit constraints.',
+  equation: 'minimise cost + fragmentation',
+  constraints: [
+    ['xᵢ ∈ {0,1}', 'Select or do not select a planning unit'],
+    ['Σ cᵢxᵢ ≤ B', 'Respect an agreed budget'],
+    ['Σ hᵢₛxᵢ ≥ Tₛ', 'Meet habitat or representation targets'],
+    ['connectivity', 'Maintain ecological routes and relationships'],
+  ],
+  mipFoot: 'Real models can combine costs, carbon, species, restoration, and connectivity. Their outputs need review with communities, authorities, and technical teams before they become action.',
+  methodKicker: 'FROM MAP TO ACTION',
+  methodTitle: 'A process that makes its decisions visible.',
+  steps: [
+    ['01', 'Listen and frame', 'Define the question with communities and local actors. Identify rights, existing agreements, and areas that must not be treated as negotiable variables.'],
+    ['02', 'Read the evidence', 'Bring together land cover, connectivity, species, deforestation alerts, costs, and delivery capacity. State uncertainty instead of concealing it.'],
+    ['03', 'Explore alternatives', 'Compare conservation and restoration portfolios: what every scenario gains, what it costs, and which risks it shifts. A model is a way to explain, never to impose.'],
+    ['04', 'Agree and learn', 'Validate in the field, monitor outcomes, and adjust. Conservation is a long-term commitment, not a single map selection.'],
+  ],
+  sourcesKicker: 'SOURCES AND FURTHER READING',
+  sourcesTitle: 'Every decision deserves to be reviewable.',
+  sourcesLead: 'This site distinguishes official data, encyclopaedic context, and methods literature. Use them as a starting point, never as a substitute for place-based work.',
+  sources: [
+    ['IDEAM · Forest cover and deforestation monitoring 2024', 'National figures on natural forest, deforestation, and location.', 'https://www.ideam.gov.co/file-download/download/public/19945'],
+    ['Wikipedia · Deforestation in Colombia', 'General context, impacts, and references for further research.', 'https://es.wikipedia.org/wiki/Deforestaci%C3%B3n_en_Colombia'],
+    ['Schuster et al. · Exact integer linear programming solvers', 'Peer-reviewed research on exact optimisation in conservation planning.', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7261139/'],
+    ['prioritizr · Package overview', 'Documentation for a systematic conservation planning tool using MILP.', 'https://prioritizr.net/articles/package_overview.html'],
+  ],
+  finalTitle: 'Conservation is building futures the forest can inhabit.',
+  finalText: 'Forestal Colombia gathers questions, data, and methods to support more responsible conversations about place.',
+  finalButton: 'Back to the top',
+  footer: 'Information, place, and conservation.',
+  language: 'Language',
+};
+
+const photoUrl = 'https://commons.wikimedia.org/wiki/Special:FilePath/Bosque_andino,_Serranía_de_Minas_en_La_Argentina,_Huila.jpg?width=1800';
+const photoSource = 'https://commons.wikimedia.org/wiki/File:Bosque_andino,_Serran%C3%ADa_de_Minas_en_La_Argentina,_Huila.jpg';
+---
+
+<BaseLayout title={copy.title} description={copy.description} lang={locale}>
+  <main>
+    <section class="hero" id="inicio" style={`--hero-image: url("${photoUrl}")`}>
+      <header class="site-header shell">
+        <a class="wordmark" href={isSpanish ? '/' : '/en/'} aria-label="Forestal Colombia">
+          <span class="wordmark-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>FORESTAL<br />COLOMBIA</span>
+        </a>
+        <nav class="primary-nav" aria-label={copy.menu}>
+          {copy.nav.map(([label, href]) => <a href={href}>{label}</a>)}
+        </nav>
+        <div class="language-switch" aria-label={copy.language}>
+          <a href="/" class:list={{ active: isSpanish }} lang="es" aria-current={isSpanish ? 'page' : undefined}>ES</a>
+          <a href="/en/" class:list={{ active: !isSpanish }} lang="en" aria-current={!isSpanish ? 'page' : undefined}>EN</a>
+        </div>
+      </header>
+
+      <div class="hero-grid shell">
+        <div class="hero-copy">
+          <p class="micro light">{copy.heroKicker}</p>
+          <h1>{copy.heroTitle}</h1>
+          <p class="hero-lead">{copy.heroLead}</p>
+          <a class="arrow-link light" href="#panorama"><span>{copy.heroAction}</span><b aria-hidden="true">↓</b></a>
+        </div>
+        <div class="hero-fact" aria-label={copy.heroMeta}>
+          <span class="fact-line"></span>
+          <p>{copy.heroMeta}</p>
+        </div>
+      </div>
+      <a class="photo-credit shell" href={photoSource} target="_blank" rel="noreferrer">{copy.heroCredit}<span aria-hidden="true"> ↗</span></a>
+    </section>
+
+    <section class="question shell">
+      <div><p class="micro">{copy.introLabel}</p></div>
+      <div class="question-copy">
+        <h2>{copy.intro}</h2>
+        <p>{copy.introBody}</p>
+      </div>
+    </section>
+
+    <section class="numbers" aria-label={copy.statLabel}>
+      <div class="shell">
+        <p class="micro numbers-label">{copy.statLabel}</p>
+        <div class="stats">
+          <article><strong>{copy.stat1}</strong><span>{copy.stat1Label}</span></article>
+          <article><strong>{copy.stat2}</strong><span>{copy.stat2Label}</span></article>
+          <article><strong>{copy.stat3}</strong><span>{copy.stat3Label}</span></article>
+        </div>
+        <p class="data-note">{copy.dataNote}</p>
+      </div>
+    </section>
+
+    <section class="panorama shell section" id="panorama">
+      <div class="section-heading">
+        <p class="micro">{copy.panoramaKicker}</p>
+        <h2>{copy.panoramaTitle}</h2>
+      </div>
+      <div class="panorama-grid">
+        <div class="panorama-copy">
+          <p>{copy.panoramaText}</p>
+          <a class="arrow-link dark" href="https://www.ideam.gov.co/file-download/download/public/19945" target="_blank" rel="noreferrer"><span>{copy.panoramaLink}</span><b aria-hidden="true">↗</b></a>
+        </div>
+        <div class="loss-ring" aria-label={`${copy.ringValue} ${copy.ringTop}`}>
+          <div class="ring-inner"><small>{copy.ringTop}</small><strong>{copy.ringValue}</strong><small>{copy.ringBottom}</small></div>
+        </div>
+      </div>
+      <div class="place-list">
+        {copy.places.map(([place, primary, secondary], index) => (
+          <article>
+            <span>0{index + 1}</span>
+            <h3>{place}</h3>
+            <p>{primary}</p>
+            <small>{secondary}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="priorities" id="priorizar">
+      <div class="shell priority-intro">
+        <p class="micro light">{copy.priorityKicker}</p>
+        <h2>{copy.priorityTitle}</h2>
+        <p>{copy.priorityLead}</p>
+      </div>
+      <div class="mip-card shell">
+        <div class="mip-label"><span></span>{copy.mipLabel}</div>
+        <div class="mip-grid">
+          <div><h3>{copy.mipTitle}</h3><p>{copy.mipIntro}</p></div>
+          <div class="formula" aria-label={copy.equation}>
+            <span>{copy.equation}</span>
+            <b>Σ c<sub>i</sub>x<sub>i</sub> + λF</b>
+          </div>
+        </div>
+        <div class="constraints">
+          {copy.constraints.map(([symbol, explanation]) => <div><code>{symbol}</code><p>{explanation}</p></div>)}
+        </div>
+        <p class="mip-foot">{copy.mipFoot}</p>
+      </div>
+    </section>
+
+    <section class="method shell section" id="metodo">
+      <div class="section-heading narrow"><p class="micro">{copy.methodKicker}</p><h2>{copy.methodTitle}</h2></div>
+      <div class="steps">
+        {copy.steps.map(([number, title, description]) => (
+          <article>
+            <span>{number}</span><h3>{title}</h3><p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="sources" id="fuentes">
+      <div class="shell sources-layout">
+        <div class="sources-copy"><p class="micro">{copy.sourcesKicker}</p><h2>{copy.sourcesTitle}</h2><p>{copy.sourcesLead}</p></div>
+        <div class="source-list">
+          {copy.sources.map(([title, description, url], index) => (
+            <a href={url} target="_blank" rel="noreferrer">
+              <span>0{index + 1}</span><div><h3>{title}</h3><p>{description}</p></div><b aria-hidden="true">↗</b>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="shell"><p class="micro light">FORESTAL COLOMBIA</p><h2>{copy.finalTitle}</h2><p>{copy.finalText}</p><a class="closing-link" href="#inicio">{copy.finalButton} <span aria-hidden="true">↑</span></a></div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-layout"><a class="wordmark" href={isSpanish ? '/' : '/en/'}><span class="wordmark-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>FORESTAL<br />COLOMBIA</span></a><span>{copy.footer}</span><span>© {new Date().getFullYear()}</span></div></footer>
+</BaseLayout>

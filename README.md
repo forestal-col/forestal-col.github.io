@@ -1,6 +1,6 @@
 # Forestal Colombia
 
-Sitio estático de Forestal Colombia, creado con [Astro](https://astro.build) y preparado para GitHub Pages.
+Sitio estático bilingüe de Forestal Colombia, creado con [Astro](https://astro.build) y preparado para GitHub Pages. La página principal está en castellano y la versión en inglés vive en `/en/`.
 
 ## Desarrollo
 
