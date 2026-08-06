@@ -29,3 +29,7 @@ Thumbs.db
 # `dist/` is intentionally tracked for now so the built site is available in Git.
 !dist/
 !dist/**
+tmp
+temp
+tmp/worktrees
+temp/worktrees
