@@ -29,11 +29,12 @@ Thumbs.db
 # `dist/` is intentionally tracked for now so the built site is available in Git.
 !dist/
 !dist/**
-tmp
-temp
 tmp/worktrees
 temp/worktrees
 
 # Sanctioned scratch locations - AGENTS.md requires both, trailing-slash form
 tmp/
 temp/
+
+# machine-local symlink to ORESoftware/my-ai AGENTS.md; never committed
+.ores/
